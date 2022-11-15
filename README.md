@@ -12,7 +12,7 @@ In all this 3 options it is important for us to have access of your technical in
 The goal is for all of us to learn from each others.  
 
 ## Share with us
-If you are using a private repository on GitHub, add us as a collaborator (`buenjybar` and `baptooo`) so we can read your code.
+If you are using a private repository on GitHub, add us as a collaborator (`baptooo` and `georgios-mavroudis`) so we can read your code.
 
 Otherwise share us your code in a zip file ( using this `git archive --format zip --output /full/path/to/zipfile.zip master` )
 
@@ -20,7 +20,7 @@ Otherwise share us your code in a zip file ( using this `git archive --format zi
 
 In this option we are going to code a small Web Application to help the Nurse to better manage the patient flow in the hospital.  
 
-During this session of ~2-4h, we will evaluate your coding skills on multiple aspects!!
+During this session of ~4-5h, we will evaluate your coding skills on multiple aspects!!
 It is important to read all the instructions before to start your chrono ⏱!.
 
 ### Instructions
