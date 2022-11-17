@@ -20,7 +20,7 @@ Otherwise share us your code in a zip file ( using this `git archive --format zi
 
 In this option we are going to code a small Web Application to help the Nurse to better manage the patient flow in the hospital.  
 
-During this session of ~4-5h, we will evaluate your coding skills on multiple aspects!!
+During this session of ~2-4h, we will evaluate your coding skills on multiple aspects!!
 It is important to read all the instructions before to start your chrono ⏱!.
 
 ### Instructions
