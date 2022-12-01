@@ -23,6 +23,7 @@ module.exports = {
         'camelcase': 'error',
         'spaced-comment': 'error',
         'quotes': ['error', 'single'],
-        'no-duplicate-imports': 'warn'
+        'no-duplicate-imports': 'warn',
+        '@typescript-eslint/ban-ts-comment': 'warn'
     }
 }

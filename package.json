@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "api": "npm start --workspace=server",
+    "app": "npm start --workspace=app",
     "start": "concurrently \"npm run api\" \"npm start --workspace=app --if-present\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "concurrently": "^7.4.0",
-    "json-server": "^0.16.1"
+    "json-server": "^0.17.1"
   },
   "workspaces": [
     "server",
