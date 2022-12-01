@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import { cards } from './ducks'
+import { patients } from './ducks'
 
 export const store = configureStore({
-  reducer: { cards },
+  reducer: { patients },
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

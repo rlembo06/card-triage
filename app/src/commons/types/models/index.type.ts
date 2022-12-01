@@ -1,3 +1,3 @@
-import type Card from './Card.model'
+import type Patient from './Patient.model'
 
-export type { Card }
+export type { Patient }

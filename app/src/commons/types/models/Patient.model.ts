@@ -1,6 +1,6 @@
 import { Status } from '../app'
 
-type Card = {
+type Patient = {
   id: string
   arrhythmias: string[]
   created_date: Date
@@ -8,4 +8,4 @@ type Card = {
   status: Status
 }
 
-export default Card
+export default Patient
