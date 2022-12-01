@@ -5,6 +5,10 @@ const routes: Route[] = [
     to: '/',
     name: 'Home',
   },
+  {
+    to: '/patients',
+    name: 'Patients',
+  },
 ]
 
 export { routes }

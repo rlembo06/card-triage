@@ -14,19 +14,19 @@ function useStatusByRequest<T>(request: () => Promise<any>): StatusByRequestHook
   const [status, setStatus] = useState<Status>('NONE')
 
   const requestWrapped = async (): Promise<T> => {
-    setStatus('IN_PROGRESS')
+    setStatus('PENDING')
     try {
       const result: T = await request()
-      setStatus('SUCCESS')
+      setStatus('DONE')
       return result
     } catch (error) {
-      setStatus('ERROR')
+      setStatus('REJECTED')
       throw error
     }
   }
 
   useEffect(() => {
-    if (status === 'SUCCESS' || status === 'ERROR') {
+    if (status === 'DONE' || status === 'REJECTED') {
       setStatus('NONE')
     }
   }, [status])
