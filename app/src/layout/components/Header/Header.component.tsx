@@ -6,6 +6,8 @@ import { Layout } from 'antd'
 import { type Route, routes } from '@/commons'
 import { RLMenu } from '@/components/atoms'
 
+import './styles.css'
+
 const { Header: AHeader } = Layout
 
 const Header = () => {
@@ -13,19 +15,17 @@ const Header = () => {
 
   return (
     <AHeader>
-      <div>
-        <a href={routes.find((route: Route) => ['Home'].includes(route.name))?.to || '/'}>
-          <>
-            Romain <b>LEMBO</b>
-          </>
-        </a>
+      <div className="navbar">
+        <div className="logo">Romain LEMBO</div>
+        <RLMenu
+          className="menu"
+          theme="dark"
+          mode='horizontal'
+          defaultSelectedKeys={['2']}
+          items={routes.map(({ to: key, name: label }: Route) => ({ label, key }))}
+          onSelect={({ key }) => navigate(key)}
+        />
       </div>
-      <RLMenu
-        mode='horizontal'
-        defaultSelectedKeys={['2']}
-        items={routes.map(({ to: key, name: label }: Route) => ({ label, key }))}
-        onSelect={({ key }) => navigate(key)}
-      />
     </AHeader>
   )
 }

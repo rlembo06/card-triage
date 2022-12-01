@@ -1,0 +1,16 @@
+.navbar {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.logo {
+    color: white;
+    flex-grow: 1;
+    flex-basis: 102px;
+}
+
+.ant-menu.ant-menu-root {
+    flex-grow: 18;
+}

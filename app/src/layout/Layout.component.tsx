@@ -1,6 +1,6 @@
 import { type LayoutProps as ALayoutProps, Layout as ALayout } from 'antd'
 
-import { type ContentProps, Content, Header, Footer } from './components'
+import { type ContentProps, Content, Header } from './components'
 
 export type LayoutProps = ALayoutProps & ContentProps
 
@@ -9,7 +9,6 @@ const Layout = ({ children }: LayoutProps) => {
     <ALayout>
       <Header />
       <Content>{children}</Content>
-      <Footer />
     </ALayout>
   )
 }
