@@ -1,10 +1,16 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import type { Patient } from '@/commons'
+import { type Patient, patientsToDataSourceFiltered } from '@/commons'
 
-import { type RLListStatusItem, RLCol, RLListStatus, RLRow, RLSearchBar } from '@/components'
+import {
+  type RLListStatusItem,
+  RLCol,
+  RLInput,
+  RLListStatus,
+  RLRow,
+} from '@/components'
 
 import {
   operations as patientsOperations,
@@ -14,26 +20,38 @@ import {
 const Patients = () => {
   const dispatch = useDispatch()
 
+  const [filters, setFilters] = useState<{ name: string; arrhythmias: string[] }>({
+    name: '',
+    arrhythmias: [],
+  })
+
   const patientsList: Patient[] | unknown[] = useSelector(patientsSelectors.selectAll)
 
-  const dataSource: RLListStatusItem[] = ((patientsList as Patient[]) || ([] as Patient[])).map(
-    ({ patient_name, ...patient }) => ({ ...patient, name: patient_name }),
-  )
+  const dataSource: RLListStatusItem[] = patientsToDataSourceFiltered({
+    patientsList: patientsList as Patient[],
+    filters,
+  })
 
   // @ts-ignore TODO: to fix error
   const fetchPatientsList = async () => dispatch(patientsOperations.fetchPatientsList())
+
+  const onSearch = (value: string): void => setFilters({ ...filters, name: value })
 
   useEffect(() => {
     fetchPatientsList()
   }, [])
 
-  // return <RLListStatus dataSource={dataSource} />
-
   return (
     <>
       <RLRow gutter={[16, 16]}>
         <RLCol span={24}>
-          <RLSearchBar />
+          {/* <RLSearchBar /> */}
+          <RLInput.Search
+            allowClear
+            placeholder='Filter patients by name'
+            enterButton='Search'
+            onSearch={onSearch}
+          />
         </RLCol>
       </RLRow>
       <RLRow gutter={[16, 16]}>
