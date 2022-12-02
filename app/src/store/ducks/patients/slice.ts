@@ -1,5 +1,11 @@
-import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit'
+import {
+  type PayloadAction,
+  createAsyncThunk,
+  createEntityAdapter,
+  createSlice,
+} from '@reduxjs/toolkit'
 
+import type { Status } from '@/commons'
 import type { RootState } from '@/store/store'
 
 import { type PatientsState, FETCH_PATIENTS_LIST } from './types'
@@ -25,7 +31,14 @@ const fetchPatientsList = createAsyncThunk(FETCH_PATIENTS_LIST, () => patientsAp
 const { actions: actionsSlice, reducer } = createSlice({
   name: 'patients',
   initialState,
-  reducers: {},
+  reducers: {
+    updatePatientStatus(
+      state: PatientsState,
+      { payload: { status, id } }: PayloadAction<{ status: Status; id: string }>,
+    ) {
+      patientsAdapter.updateOne(state, { id, changes: { status } })
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchPatientsList.pending, (state: PatientsState) => {

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { type Patient, patientsToDataSourceFiltered } from '@/commons'
+import { type Patient, type Status, patientsToDataSourceFiltered } from '@/commons'
 import { RLCol, RLInput, RLPatientCardStatus, RLListStatus, RLRow, RLSelect } from '@/components'
 
 import {
@@ -39,6 +39,9 @@ const Patients = () => {
   const onFilterByArrhythmias = (value: string[]): void =>
     setFilters({ ...filters, arrhythmias: value })
 
+  const onChangeStatus = ({ status, id }: { status: Status; id: string }) =>
+    dispatch(patientsOperations.updatePatientStatus({ status, id }))
+
   useEffect(() => {
     fetchPatientsList()
   }, [])
@@ -67,7 +70,9 @@ const Patients = () => {
       <RLCol span={24}>
         <RLListStatus<Patient>
           dataSource={dataSource}
-          renderItem={(patient) => <RLPatientCardStatus patient={patient} />}
+          renderItem={(patient) => (
+            <RLPatientCardStatus patient={patient} onChangeStatus={onChangeStatus} />
+          )}
         />
       </RLCol>
     </RLRow>
