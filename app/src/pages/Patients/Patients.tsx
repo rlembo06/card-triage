@@ -27,11 +27,7 @@ const Patients = () => {
     fetchPatientsList()
   }, [])
 
-  return (
-    <>
-      <RLListStatus dataSource={dataSource} />
-    </>
-  )
+  return <RLListStatus dataSource={dataSource} />
 }
 
 export default Patients

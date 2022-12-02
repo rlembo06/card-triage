@@ -1,11 +1,7 @@
-import type { Status } from '@/commons'
-
-import { RLCol, RLList, RLRow } from '../../atoms'
-
-type RLListStatusItem = { name: string; id: string; status: Status }
+import { type RLCardStatusItem, RLCardStatus, RLCol, RLList, RLRow } from '../..'
 
 type RLListStatusProps = {
-  dataSource: RLListStatusItem[]
+  dataSource: RLCardStatusItem[]
 }
 
 function RLListStatus({ dataSource }: RLListStatusProps) {
@@ -13,7 +9,7 @@ function RLListStatus({ dataSource }: RLListStatusProps) {
   const dataSourceByDoneStatus = dataSource.filter(({ status }) => status === 'DONE')
   const dataSourceByRejectedStatus = dataSource.filter(({ status }) => status === 'REJECTED')
 
-  const dataSourceMap: { [statusKey: string]: RLListStatusItem[] } = {
+  const dataSourceMap: { [statusKey: string]: RLCardStatusItem[] } = {
     PENDING: dataSourceByPendingStatus,
     DONE: dataSourceByDoneStatus,
     REJECTED: dataSourceByRejectedStatus,
@@ -26,18 +22,7 @@ function RLListStatus({ dataSource }: RLListStatusProps) {
         <RLCol span={colSpan} key={statusKey}>
           <RLList
             dataSource={dataSourceMap[statusKey]}
-            renderItem={({ id, name, status }) => (
-              <RLList.Item
-                key={`${statusKey}-${id}`}
-                actions={[
-                  <a key='list-loadmore-edit'>edit</a>,
-                  <a key='list-loadmore-more'>more</a>,
-                ]}
-              >
-                <RLList.Item.Meta title={<a href='https://ant.design'>{name}</a>} />
-                <div>{status}</div>
-              </RLList.Item>
-            )}
+            renderItem={(item) => <RLCardStatus item={item} />}
           />
         </RLCol>
       ))}
@@ -45,5 +30,5 @@ function RLListStatus({ dataSource }: RLListStatusProps) {
   )
 }
 
-export type { RLListStatusItem }
+export type { RLCardStatusItem as RLListStatusItem }
 export default RLListStatus
