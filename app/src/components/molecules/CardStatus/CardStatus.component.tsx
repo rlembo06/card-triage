@@ -17,7 +17,7 @@ function RLCardStatus({ item: { image, name, status } }: RLCardStatusProps) {
     <RLCard>
       <RLRow gutter={[16, 16]}>
         <RLCol span={!isXsScreen ? 11 : 24}>
-          <RLImage src={hasLogo ? image.url : Profile} width={40} height={40} />
+          <RLImage preview={false} src={hasLogo ? image.url : Profile} width={40} height={40} />
         </RLCol>
         <RLCol span={!isXsScreen ? 11 : 24}>
           <RLRow gutter={[16, 16]}>

@@ -1,0 +1,1 @@
+export { default as RLSearchBar } from './SearchBar.component'

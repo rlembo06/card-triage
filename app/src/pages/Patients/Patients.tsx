@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import type { Patient } from '@/commons'
 
-import { type RLListStatusItem, RLListStatus } from '@/components'
+import { type RLListStatusItem, RLCol, RLListStatus, RLRow, RLSearchBar } from '@/components'
 
 import {
   operations as patientsOperations,
@@ -27,7 +27,22 @@ const Patients = () => {
     fetchPatientsList()
   }, [])
 
-  return <RLListStatus dataSource={dataSource} />
+  // return <RLListStatus dataSource={dataSource} />
+
+  return (
+    <>
+      <RLRow gutter={[16, 16]}>
+        <RLCol span={24}>
+          <RLSearchBar />
+        </RLCol>
+      </RLRow>
+      <RLRow gutter={[16, 16]}>
+        <RLCol span={24}>
+          <RLListStatus dataSource={dataSource} />
+        </RLCol>
+      </RLRow>
+    </>
+  )
 }
 
 export default Patients
