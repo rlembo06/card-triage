@@ -59,7 +59,10 @@ const { actions: actionsSlice, reducer } = createSlice({
 /* SELECTORS */
 const patientsSelectors = patientsAdapter.getSelectors((state: RootState) => state.patients)
 
-const selectors = { ...patientsSelectors }
+const selectors = {
+  ...patientsSelectors,
+  selectStatus: (state: RootState) => state.patients.status,
+}
 
 /* EXPORTS */
 

@@ -2,13 +2,24 @@ import { useEffect, useState } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { type Patient, type Status, patientsToDataSourceFiltered } from '@/commons'
-import { RLCol, RLInput, RLPatientCardStatus, RLListStatus, RLRow, RLSelect } from '@/components'
+import { type Patient, type Status, StatusState, patientsToDataSourceFiltered } from '@/commons'
+import {
+  RLCol,
+  RLInput,
+  RLPatientCardStatus,
+  RLListStatus,
+  RLRow,
+  RLSelect,
+  RLSpin,
+  RLSpace,
+} from '@/components'
 
 import {
   operations as patientsOperations,
   selectors as patientsSelectors,
 } from '@/store/ducks/patients'
+
+import './styles.css'
 
 const Patients = () => {
   const dispatch = useDispatch()
@@ -19,6 +30,9 @@ const Patients = () => {
   })
 
   const patientsList: Patient[] | unknown[] = useSelector(patientsSelectors.selectAll)
+  const patientsStatus: { [statusKey: string]: StatusState } = useSelector(
+    patientsSelectors.selectStatus,
+  )
 
   const arrhythmiasOptions: { label: string; value: string }[] = (patientsList as Patient[])
     .map(({ arrhythmias }) => arrhythmias)
@@ -46,7 +60,11 @@ const Patients = () => {
     fetchPatientsList()
   }, [])
 
-  return (
+  return patientsStatus.fetching.status === 'PENDING' ? (
+    <RLSpace align="center" className="spin-wrap">
+      <RLSpin size='large' />
+    </RLSpace>
+  ) : (
     <RLRow gutter={[16, 16]}>
       <RLCol span={12}>
         <RLInput.Search
