@@ -38,7 +38,7 @@ const { actions: actionsSlice, reducer } = createSlice({
       })
       .addCase(fetchPatientsList.rejected, (state: PatientsState, { error }) => {
         state.status.fetching.status = 'REJECTED'
-        state.status.fetching.error = error.toString()
+        state.status.fetching.error = error.message || 'Failure to retrieve patients'
       })
   },
 })
