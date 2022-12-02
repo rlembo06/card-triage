@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { type Patient, patientsToDataSourceFiltered } from '@/commons'
-import { type RLListStatusItem, RLCol, RLInput, RLListStatus, RLRow, RLSelect } from '@/components'
+import { RLCol, RLInput, RLPatientCardStatus, RLListStatus, RLRow, RLSelect } from '@/components'
 
 import {
   operations as patientsOperations,
@@ -26,7 +26,7 @@ const Patients = () => {
     .filter((arrhythmia, index, self) => self.indexOf(arrhythmia) === index)
     .map((arrhythmia) => ({ label: arrhythmia, value: arrhythmia }))
 
-  const dataSource: RLListStatusItem[] = patientsToDataSourceFiltered({
+  const dataSource: Patient[] = patientsToDataSourceFiltered({
     patientsList: patientsList as Patient[],
     filters,
   })
@@ -65,7 +65,10 @@ const Patients = () => {
         />
       </RLCol>
       <RLCol span={24}>
-        <RLListStatus dataSource={dataSource} />
+        <RLListStatus<Patient>
+          dataSource={dataSource}
+          renderItem={(patient) => <RLPatientCardStatus patient={patient} />}
+        />
       </RLCol>
     </RLRow>
   )

@@ -1,15 +1,21 @@
-import { type RLCardStatusItem, RLCardStatus, RLCol, RLList, RLRow } from '../..'
+import type { ReactNode } from 'react'
 
-type RLListStatusProps = {
-  dataSource: RLCardStatusItem[]
+import { RLCol, RLList, RLRow } from '../..'
+
+type RLListStatusProps<T extends { status: string }> = {
+  dataSource: T[]
+  renderItem: (item: T) => ReactNode
 }
 
-function RLListStatus({ dataSource }: RLListStatusProps) {
+function RLListStatus<T extends { status: string }>({
+  dataSource,
+  renderItem,
+}: RLListStatusProps<T>) {
   const dataSourceByPendingStatus = dataSource.filter(({ status }) => status === 'PENDING')
   const dataSourceByDoneStatus = dataSource.filter(({ status }) => status === 'DONE')
   const dataSourceByRejectedStatus = dataSource.filter(({ status }) => status === 'REJECTED')
 
-  const dataSourceMap: { [statusKey: string]: RLCardStatusItem[] } = {
+  const dataSourceMap: { [statusKey: string]: T[] } = {
     PENDING: dataSourceByPendingStatus,
     DONE: dataSourceByDoneStatus,
     REJECTED: dataSourceByRejectedStatus,
@@ -22,7 +28,7 @@ function RLListStatus({ dataSource }: RLListStatusProps) {
         <RLCol span={colSpan} key={statusKey}>
           <RLList
             dataSource={dataSourceMap[statusKey]}
-            renderItem={(item) => <RLCardStatus item={item} />}
+            renderItem={renderItem}
           />
         </RLCol>
       ))}
@@ -30,5 +36,4 @@ function RLListStatus({ dataSource }: RLListStatusProps) {
   )
 }
 
-export type { RLCardStatusItem as RLListStatusItem }
 export default RLListStatus

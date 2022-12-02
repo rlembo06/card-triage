@@ -1,1 +1,1 @@
-export * from './CardStatus'
+export * from './PatientCardStatus'
