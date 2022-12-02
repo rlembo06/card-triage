@@ -33,7 +33,7 @@ function RLPatientCardStatus({
   const hasLogo = !!image?.url
   return (
     <RLBadge.Ribbon text={status} color={STATUS_COLOR_MAP[status]}>
-      <RLCard>
+      <RLCard style={{ marginBottom: '16px' }}>
         <RLRow gutter={[16, 16]}>
           <RLCol span={!isXsScreen ? 11 : 24}>
             <RLImage preview={false} src={hasLogo ? image.url : Profile} width={40} height={40} />

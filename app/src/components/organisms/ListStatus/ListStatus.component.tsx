@@ -26,10 +26,7 @@ function RLListStatus<T extends { status: string }>({
     <RLRow gutter={[16, 16]}>
       {Object.keys(dataSourceMap).map((statusKey: string) => (
         <RLCol span={colSpan} key={statusKey}>
-          <RLList
-            dataSource={dataSourceMap[statusKey]}
-            renderItem={renderItem}
-          />
+          <RLList dataSource={dataSourceMap[statusKey]} renderItem={renderItem} />
         </RLCol>
       ))}
     </RLRow>
