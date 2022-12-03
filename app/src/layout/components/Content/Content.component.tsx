@@ -1,6 +1,8 @@
 import { Layout } from 'antd'
 import { ReactNode } from 'react'
 
+import './styles.css'
+
 const { Content: AContent } = Layout
 
 type ContentProps = { children: ReactNode }
@@ -8,7 +10,7 @@ type ContentProps = { children: ReactNode }
 const Content = ({ children }: ContentProps) => {
   return (
     <AContent>
-      <div>{children}</div>
+      <div className="content">{children}</div>
     </AContent>
   )
 }

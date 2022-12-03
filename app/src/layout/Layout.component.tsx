@@ -6,7 +6,7 @@ export type LayoutProps = ALayoutProps & ContentProps
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <ALayout>
+    <ALayout style={{ background: 'inherit' }}>
       <Header />
       <Content>{children}</Content>
     </ALayout>
