@@ -2,7 +2,7 @@ import type { Patient } from '@/commons'
 
 import type { PatientsState } from './types'
 
-import reducer, { actions } from './slice'
+import reducer, { actions, selectors } from './slice'
 
 const PATIENT_A: Patient = {
   id: '1',
@@ -95,6 +95,22 @@ describe('store/ducks/patients/slice', () => {
               error: error.message,
             },
           },
+        })
+      })
+    })
+  })
+
+  describe('selectors', () => {
+    describe('selectStatus', () => {
+      ;[
+        {
+          msg: 'should return all status is map',
+          state: { patients: DEFAULT_PATIENTS_STATE },
+          expected: { fetching: { status: 'NONE', error: null } },
+        },
+      ].forEach((testCase) => {
+        it(testCase.msg, () => {
+          expect(selectors.selectStatus(testCase.state)).toStrictEqual(testCase.expected)
         })
       })
     })
