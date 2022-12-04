@@ -1,6 +1,4 @@
-import type { EmptyProps } from 'antd'
-
-import { Empty } from 'antd'
+import { type EmptyProps, Empty } from 'antd'
 
 type RLEmptyProps = EmptyProps
 

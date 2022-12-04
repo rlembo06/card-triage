@@ -1,6 +1,4 @@
-import type { CarouselProps } from 'antd'
-
-import { Carousel } from 'antd'
+import { type CarouselProps, Carousel } from 'antd'
 
 type RLCarouselProps = CarouselProps
 

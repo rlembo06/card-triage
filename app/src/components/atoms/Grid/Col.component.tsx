@@ -1,6 +1,4 @@
-import type { ColProps } from 'antd'
-
-import { Col } from 'antd'
+import { type ColProps, Col } from 'antd'
 
 type RLColProps = ColProps
 

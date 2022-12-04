@@ -1,6 +1,4 @@
-import type { SpinProps } from 'antd'
-
-import { Spin } from 'antd'
+import { type SpinProps, Spin } from 'antd'
 
 type RLSpinProps = SpinProps
 
