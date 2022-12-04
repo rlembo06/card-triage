@@ -1,6 +1,6 @@
 import type { Patient } from '@/commons'
 
-const patientsToDataSourceFiltered = ({
+const patientsFiltered = ({
   patientsList,
   filters,
 }: {
@@ -18,4 +18,4 @@ const patientsToDataSourceFiltered = ({
     return !(shouldFilterByName || shouldFilterByArrhythmias)
   })
 
-export default patientsToDataSourceFiltered
+export default patientsFiltered

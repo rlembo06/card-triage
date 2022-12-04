@@ -1,6 +1,4 @@
-import type { CardProps } from 'antd'
-
-import { Card } from 'antd'
+import { type CardProps, Card } from 'antd'
 
 type RLCardProps = CardProps
 

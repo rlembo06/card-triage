@@ -1,6 +1,4 @@
-import type { SpaceProps } from 'antd'
-
-import { Space } from 'antd'
+import { type SpaceProps, Space } from 'antd'
 
 type RLSpaceProps = SpaceProps
 

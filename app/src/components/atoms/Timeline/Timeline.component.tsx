@@ -1,7 +1,5 @@
-import type { TimelineProps } from 'antd'
-
-import { ReactNode } from 'react'
-import { Timeline } from 'antd'
+import type { ReactNode } from 'react'
+import { type TimelineProps, Timeline } from 'antd'
 
 type RLTimelineProps = TimelineProps & { children: ReactNode[] | ReactNode }
 

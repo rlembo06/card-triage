@@ -1,6 +1,4 @@
-import type { DividerProps } from 'antd'
-
-import { Divider } from 'antd'
+import { type DividerProps, Divider } from 'antd'
 
 type RLDividerProps = DividerProps
 

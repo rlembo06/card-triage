@@ -1,6 +1,4 @@
-import type { ProgressProps } from 'antd'
-
-import { Progress } from 'antd'
+import { type ProgressProps, Progress } from 'antd'
 
 type RLProgressProps = ProgressProps
 

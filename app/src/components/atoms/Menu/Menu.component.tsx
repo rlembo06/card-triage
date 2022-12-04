@@ -1,6 +1,4 @@
-import type { MenuProps } from 'antd'
-
-import { Menu } from 'antd'
+import { type MenuProps, Menu } from 'antd'
 
 type RLMenuProps = MenuProps
 

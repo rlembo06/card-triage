@@ -1,6 +1,6 @@
 import type { EntityState } from '@reduxjs/toolkit'
 
-import type { Patient, Status, StatusState } from '@/commons'
+import type { Patient, StatusState } from '@/commons'
 
 const FETCH_PATIENTS_LIST = '@patients/FETCH_PATIENTS_LIST'
 

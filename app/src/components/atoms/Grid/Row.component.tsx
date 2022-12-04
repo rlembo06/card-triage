@@ -1,6 +1,4 @@
-import type { RowProps } from 'antd'
-
-import { Row } from 'antd'
+import { type RowProps, Row } from 'antd'
 
 type RLRowProps = RowProps
 

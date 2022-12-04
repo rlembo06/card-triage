@@ -1,7 +1,5 @@
-import type { TypographyProps } from 'antd'
-
-import { ReactNode } from 'react'
-import { Typography } from 'antd'
+import type { ReactNode } from 'react'
+import { type TypographyProps, Typography } from 'antd'
 
 type RLTypographyProps = TypographyProps & { children: ReactNode[] | ReactNode }
 
