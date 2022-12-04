@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import type { AnyAction } from 'redux'
 
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { type Patient, type Status, StatusState, patientsFiltered } from '@/commons'
@@ -45,8 +46,8 @@ const Patients = () => {
     filters,
   })
 
-  // @ts-ignore TODO: to fix error
-  const fetchPatientsList = async () => dispatch(patientsOperations.fetchPatientsList())
+  const fetchPatientsList = () =>
+    dispatch(patientsOperations.fetchPatientsList() as unknown as AnyAction)
 
   const onFilterByName = (value: string): void => setFilters({ ...filters, name: value })
 
@@ -61,7 +62,7 @@ const Patients = () => {
   }, [])
 
   return patientsStatus.fetching.status === 'PENDING' ? (
-    <RLSpace align="center" className="spin-wrap">
+    <RLSpace align='center' className='spin-wrap'>
       <RLSpin size='large' />
     </RLSpace>
   ) : (
@@ -79,7 +80,7 @@ const Patients = () => {
           mode='multiple'
           allowClear
           style={{ width: '100%' }}
-          placeholder='Filter patient by arrhythmias '
+          placeholder='Filter patients by arrhythmias '
           defaultValue={filters.arrhythmias}
           onChange={onFilterByArrhythmias}
           options={arrhythmiasOptions}

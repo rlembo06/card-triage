@@ -1,3 +1,5 @@
+import type { AnyAction } from 'redux'
+
 import type { Patient } from '@/commons'
 
 import type { PatientsState } from './types'
@@ -12,8 +14,7 @@ const PATIENT_A: Patient = {
   status: 'PENDING',
 }
 
-// @ts-ignore: ignore action for test
-const DEFAULT_PATIENTS_STATE: PatientsState = reducer(undefined, {})
+const DEFAULT_PATIENTS_STATE: PatientsState = reducer(undefined, {} as AnyAction)
 const PATIENTS_STATE_MOCK: PatientsState = Object.assign({}, DEFAULT_PATIENTS_STATE, {
   ids: [PATIENT_A.id],
   entities: {
